@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UI Engineer Coding Exercise</title>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="app-name">Shuffle and Sort</div>
+    <div class="container">
+        <div class="left-elements">
+            <div class="item" id="box-1" data-id="1">
+                <div>1</div>
+            </div>            
+            <div class="item" id="box-3" data-id="3">
+                 <div>3</div>
+            </div>
+            <div class="item" id="box-2" data-id="2">
+                 <div>2</div>
+            </div>
+            <div class="item" id="box-4" data-id="4">
+                 <div>4</div>
+            </div>
+            <div class="item" id="box-5" data-id="5">
+                 <div>5</div>
+            </div>
+            <div class="item" id="box-6" data-id="6">
+                 <div>6</div>
+            </div>
+            <div class="item" id="box-7" data-id="7">
+                 <div>7</div>
+            </div>
+            <div class="item" id="box-8" data-id="8">
+                 <div>8</div>
+            </div>
+            <div class="item" id="box-9" data-id="9">
+                 <div>9</div>
+            </div>            
+        </div>
+        <div class="right-elements">
+           <div class="buttons">
+                <button onclick="shuffle()">SHUFFLE</button>
+                <button onclick="sort()">SORT</button>
+           </div>
+        </div>        
+    </div>
+    <div class="text">
+        Shuffle and sort by Rohith Pinto
+    </div>
+    
+</body>
+<script>
+// Finds elements with class .item and puts them into an array named item. We then sort the items in the array in ascending order by
+// using the data-id attribute. The items are then appended to the parent node i.e  .left-elements
+function sort(){
+    var item = document.querySelectorAll('.item');
+    [].slice.call(item).sort(function(a, b) {
+    var numberA = a.getAttribute('data-id')
+    var numberB = b.getAttribute('data-id')
+    return (numberA < numberB) ? -1 : (numberA > numberB) ? 1 : 0;
+    })
+    .forEach(function(item) {item.parentNode.appendChild(item)});    
+}
+
+// Finds elements with class .item and puts them into an array named items. We then sort the items in a random order using a javascript 
+// built in function Math.random(). The items are then appended to the parent node i.e  .left-elements
+function shuffle(){
+    var items = document.querySelectorAll('.item'); 
+    [].slice.call(items).sort(function(a,b){ 
+    return 0.5 - Math.random();
+    })    
+    .forEach(function(item) {item.parentNode.appendChild(item)});    
+}
+</script>
+</HTML>
